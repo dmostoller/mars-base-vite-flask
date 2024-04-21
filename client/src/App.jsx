@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import ResourceChart from './ResourceChart'
+import TasksList from './TasksList'
 
 function App() {
 
@@ -8,9 +9,12 @@ function App() {
   return (
     <>
     <div className='font-mono'>
-      <h1 className='font-bold text-primary-500 text-4xl'>MARS BASE</h1>
-      <div>
+      <h1 className='font-bold text-secondary-500 text-4xl'>MARS BASE</h1>
+      <div style={{width: "250px", margin: "auto", marginBottom: "50px"}}>
         <ResourceChart/>
+     </div>
+    <div>
+        <TasksList/>
     </div>
       <div className="card">
             <form>
@@ -19,9 +23,7 @@ function App() {
                     aria-label="game prompt" 
                     placeholder="Type here...">
                 </input>
-
-            </form>
-            
+            </form>  
       </div>
       </div>
     </>

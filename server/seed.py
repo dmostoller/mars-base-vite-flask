@@ -29,10 +29,10 @@ if __name__ == "__main__":
 
         print("Loading available resources......")
 
-        air = Resource(name = "Air", quantity = 50)
-        food = Resource(name = "Food", quantity = 50)
-        fuel = Resource(name = "Fuel", quantity = 50)        
-        water = Resource(name = "Water", quantity = 50)
+        air = Resource(name = "Air", quantity = 50, color = "yellow")
+        food = Resource(name = "Food", quantity = 50, color = "green")
+        fuel = Resource(name = "Fuel", quantity = 50, color = "red")        
+        water = Resource(name = "Water", quantity = 50, color = "blue")
 
         db.session.add(air)
         db.session.add(food)

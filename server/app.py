@@ -9,7 +9,7 @@ from flask_restful import Resource
 # Local imports
 from config import app, db, api
 # Add your model imports
-
+from models import Resource, Task, Score
 
 # Views go here!
 
@@ -17,6 +17,18 @@ from config import app, db, api
 def index():
     return '<h1>Project Server</h1>'
 
+
+@app.route('/resources', methods=['GET'])
+def resources():
+    resources = [resource.to_dict() for resource in Resource.query.all()]
+    reponse = make_response(resources, 200)
+    return reponse
+
+@app.route('/tasks', methods=['GET'])
+def tasks():
+    tasks = [task.to_dict() for task in Task.query.all()]
+    reponse = make_response(tasks, 200)
+    return reponse
 
 
 
