@@ -40,6 +40,7 @@ def perform_task(id):
     resource.quantity += task.reward
     db.session.delete(task)
     db.session.commit()
+    decrease_resource()
     response = make_response("", 204)
     return response
 

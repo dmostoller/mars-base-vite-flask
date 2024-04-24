@@ -2,6 +2,16 @@ from models import *
 import random
 
 
+def decrease_resource():
+    range_low = 25
+    range_high = 50
+
+    r = [1, 2, 3, 4]
+    resource = db.session.get(Resource, random.choice(r))
+    rand_num = random.randint(range_low,range_high)
+    resource.quantity -= rand_num
+    db.session.commit()
+
 def seed_tasks():
     Task.query.delete()
 

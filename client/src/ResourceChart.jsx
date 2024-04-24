@@ -1,32 +1,36 @@
-import { useEffect, useState } from "react";
 import { Progress } from "flowbite-react";
+// import { Progress } from "@material-tailwind/react";
 
+import { useResource } from "./resource.jsx";
 
+  import Chart from "react-apexcharts";
+  
 function ResourceChart () {
-    const [resources, setResources] = useState([]);
-    const color = "blue"
-    useEffect(() => {
-      fetch('http://127.0.0.1:5555/resources')
-        .then((r) => r.json())
-        .then((resources) => setResources(resources));
-    }, []);
+    const {resources} = useResource();    
+
 
     const resourceList = resources.map((resource) => {
         // console.log(resource)
-        return <Progress 
+        return <div key={resource.id} style={{width: "15vw"}}><Progress 
         progress={resource.quantity} 
         textLabelPosition="outside" 
         progressLabelPosition="inside" 
-        textLabel={resource.name} size="lg" 
+        textLabel={resource.name} 
+        size="xl" 
         labelProgress 
-        labelText 
+        labelText
         color={resource.color} 
-        />
+        /></div>
+    // return <div style={{width: "100px"}}><Progress value={resource.quantity} size="lg" label={resource.name} color={resource.color}  /></div>
+    
     })
 
     return(
         <>
+        <div className="flex w-full gap-2" style={{display: "flex", justifyContent: "space-between", flexWrap: "wrap"}}>
+        {/* <div className="flex w-full flex-col gap-4"> */}
         {resourceList}
+        </div>
         </>
     )
 }

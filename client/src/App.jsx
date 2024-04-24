@@ -1,16 +1,24 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import './App.css'
 import ResourceChart from './ResourceChart'
 import TasksList from './TasksList'
+import { useResource } from "./resource.jsx";
+
 
 function App() {
+    const {resources, setResources} = useResource();
 
+    useEffect(() => {
+        fetch('http://127.0.0.1:5555/resources')
+          .then((r) => r.json())
+          .then((resources) => setResources(resources));
+      }, []);
 
   return (
     <>
     <div className='font-mono'>
       <h1 className='font-bold text-secondary-500 text-4xl'>MARS BASE</h1>
-      <div style={{width: "250px", margin: "auto", marginBottom: "50px"}}>
+      <div className="overflow-x-auto" style={{margin: "auto", marginBottom: "50px", marginTop: "25px"}}>
         <ResourceChart/>
      </div>
     <div>
